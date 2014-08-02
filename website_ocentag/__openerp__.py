@@ -1,10 +1,10 @@
 {
-    'name': 'Website for Pansuriyaimpex',
+    'name': 'Website for Ocentag',
     'category': 'Website',
-    'summary': 'Website module enhancement for pansuriyaimpex',
+    'summary': 'Website module enhancement for Ocentag',
     'version': '1.0',
     'description': """
-Website module enhancement for pansuriyaimpex
+Website module enhancement for Ocentag
         """,
     'author': 'Emipro Technologies',
     'depends': ['website'],
