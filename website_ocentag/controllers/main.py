@@ -14,7 +14,7 @@ class website_test(http.Controller):
     def website_test_data(self, **kwargs):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         if request.website.user_id.id == uid:
-            return request.render('/web/login')
+            return request.redirect('/web/login')
 
         product_shape = pool.get('product.shape')
         product_shape_ids = product_shape.search(cr,uid,[],order="name")
