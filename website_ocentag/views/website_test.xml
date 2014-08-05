@@ -1553,7 +1553,7 @@
                               </form>
                               <div class="no-display">
                                   <input type="hidden" name="product" id="product_addtocart_id" value=""/>
-                                  <input type="hidden" class="hidden" id="popup_stone_id" t-field="stone.id" />
+                                  <input type="hidden" class="hidden" id="popup_stone_id" t-att-value="stone.id"  />
                               </div>
                               <script type="text/javascript">
                                   //<![CDATA[

@@ -149,7 +149,9 @@ var cart_url='http://'+parent.window.location.host;
 
 
                                 jQuery('#btnAddToCart').click(function(e) {
-                                	var product_id = jQuery('#popup_stone_id').attr('data-oe-id');
+                                	//var product_id = jQuery('#popup_stone_id').attr('data-oe-id');
+                                	var product_id = jQuery('#popup_stone_id').val();
+                                	product_id = jQuery.trim(product_id);                                	
 //                                	var data = {product_id: product_id,line_id:false,add_qty:1};
 //                                	openerp.jsonRpc("/shop/cart/update_json", 'call', {'data':data }  )
 //                					.then(function (data) {			             
