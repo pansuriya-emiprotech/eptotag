@@ -9,7 +9,7 @@ Website module for the customer registration.
 
         """,
     'author': 'Emipro Technologies',
-    'depends': ['website'],
+    'depends': ['website_ocentag'],
     'data': [
                 'views/customer_registration_templates.xml',
             ],

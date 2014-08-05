@@ -31,6 +31,16 @@ from openerp.tools.translate import _
 _logger = logging.getLogger(__name__)
 
 class AuthSignupHome(openerp.addons.web.controllers.main.Home):
+    
+    # For redirect webusers direct to website.
+    @http.route('/web', type='http', auth="none")
+    def web_client(self, s_action=None, **kw):
+        cr, uid = request.cr, request.session.uid
+        user_in_group = request.registry['res.users'].has_group(cr,uid,"res_partner_ept.website_user_group")
+        if user_in_group:        
+            kw = kw or {}
+            kw.update({'redirect':'/website-ocentag'})
+        return super(AuthSignupHome,self).web_client(s_action=s_action,**kw)
 
     @http.route('/web/registration_complete', type="http", auth="public", website=True)
     def web_registration_complete(self,*args,**kw):

@@ -19,6 +19,7 @@ class res_users_ept(osv.Model):
     def _signup_create_user(self, cr, uid, values, context=None):
         """ create a new user from the template user """
         ir_config_parameter = self.pool.get('ir.config_parameter')
+        ir_model_data = self.pool.get('ir.model.data')
         template_user_id = literal_eval(ir_config_parameter.get_param(cr, uid, 'auth_signup.template_user_id', 'False'))
         assert template_user_id and self.exists(cr, uid, template_user_id, context=context), 'Signup: invalid template user'
 
@@ -37,6 +38,9 @@ class res_users_ept(osv.Model):
             with cr.savepoint():
                 new_id = self.copy(cr, uid, template_user_id, values, context=context)
                 self.write(cr,uid,[new_id],{'active':False},context=context)
+                website_group_id = ir_model_data.xmlid_to_res_id(cr,uid,"res_partner_ept.website_user_group")
+                if website_group_id:
+                    self.write(cr,uid,[new_id],{'groups_id':[(4,website_group_id)]})
                 self.create_partner(cr, uid, new_id, context=context)
                 return new_id
         except Exception, e:
